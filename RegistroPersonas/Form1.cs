@@ -18,12 +18,15 @@ namespace RegistroPersonas
         {
             InitializeComponent();
         }
+        //Carga del formulario
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Configuración del ComboBox Tipo
             cmbTipo.Items.AddRange(new[] { "Alumno", "Profesor" });
             cmbTipo.SelectedIndex = 0;
             habilitar(true);
 
+            //Condiguración del DataGrid
             dataLista.AutoGenerateColumns = false;
             dataLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -71,7 +74,7 @@ namespace RegistroPersonas
             // Asignar la lista al DataGridView
             dataLista.DataSource = personas;
         }
-        //Método
+        //Método para limpiar los campos
         public void limpiarDatos()
         {
             cmbTipo.SelectedIndex = 0;
@@ -83,6 +86,7 @@ namespace RegistroPersonas
             lblSeleccionado.Text = "";
             habilitar(true);
         }
+        //Método para habilitar los botones necesarios
         public void habilitar(bool accion)
         {
             if (accion)
@@ -96,6 +100,8 @@ namespace RegistroPersonas
                 btnModificar.Enabled = true;
             }
         }
+
+        //Método para validar lo datos ingresados
         public bool validarDatos()
         {
             if (string.IsNullOrEmpty(txtNombre.Text))
@@ -130,6 +136,7 @@ namespace RegistroPersonas
             }
             return true;
         }
+        //Método para cargar los datos de las personas a los campos
         private void cargarPersona(Persona persona)
         {
             seleccionado = persona;
